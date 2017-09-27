@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="package" name="ec_fw" xmlns:ivy="antlib:org.apache.ivy.ant">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="dist.classes" value="build/classes" />
+	<property name="dist.dir" value="build/dist" />
+	<property name="src.dir" value="src" />
+	<property name="dist.version" value="0.1.14" />
+	<property name="findbugs.home" value="..\..\EC_BASE\findbugs-2.0.3" /> 
+	<ivy:settings id="ivy.instance" file="..\..\EC_BASE\ivysettings.xml" />
+	
+	<taskdef resource="checkstyletask.properties"/>
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" />
+ 
+	<path id="trendy_framework.classpath">
+		<pathelement location="${dist.classes}" />
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+  <target name="clean">
+		<delete dir="${dist.classes}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="lib" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.classes}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="lib" />
+		<copy includeemptydirs="false" todir="${dist.classes}">
+			<fileset dir="src">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+  <target name="resolve"><ivy:retrieve/></target>
+
+	<target name="build" depends="init,resolve">
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${dist.classes}" encoding="utf-8" includeantruntime="on">
+			<src path="${src.dir}" />
+			<exclude name="**/test/**" />
+			<classpath refid="trendy_framework.classpath" />
+		</javac>
+	</target>
+
+	<target name="package" depends="build">
+		<jar destfile="${dist.dir}/trendy-framework-${dist.version}.jar" basedir="${dist.classes}" includes="**/*.class" excludes="/test/**.class" />
+	</target>
+
+	<target name="hudson" depends="build,package,cs,findbugs">
+		<copy todir="..\..\EC_BASE\ecrepository\trendy\trendy-framework\jars" file="${dist.dir}/trendy-framework-${dist.version}.jar"/> 
+		<delete dir="lib" />
+	</target>
+	
+	<target name="cs"> 
+    <checkstyle failonviolation="false" config="..\..\EC_BASE\sun_checks.xml"> 
+      <fileset dir="${src.dir}" includes="**/*.java" /> 
+      <formatter type="plain" /> 
+      <formatter type="xml" toFile="checkstyle_report.xml" /> 
+    </checkstyle> 
+  </target>  
+  
+  <target name="findbugs">  
+    <findbugs home="${findbugs.home}" output="xml" outputFile="findbugs_errors.xml">  
+      <sourcePath path="${src.dir}" />   
+      <class location="${dist.classes}"/> 
+      <auxClasspath><path refid="trendy_framework.classpath"/></auxClasspath>
+    </findbugs>  
+  </target> 
+</project>

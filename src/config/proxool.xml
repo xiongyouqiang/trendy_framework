@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<something-else-entirely>
+<proxool>
+    <alias>fashion</alias>
+    <driver-url>jdbc:mysql://localhost:3306/fashion</driver-url>
+    <driver-class>org.gjt.mm.mysql.Driver</driver-class>
+    <statistics>1m,15m,1d</statistics> 
+    <driver-properties>
+      <property name="user" value="root"/>
+      <property name="password" value="123456"/>
+    </driver-properties>
+    <maximum-connection-count>10</maximum-connection-count>
+    <house-keeping-test-sql>select now()</house-keeping-test-sql>
+</proxool> 
+</something-else-entirely>

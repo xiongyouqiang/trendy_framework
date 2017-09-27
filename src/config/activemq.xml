@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mq_brokers>
+	<mq_broker>
+		<broker_id>Test</broker_id>
+		<broker_url>tcp://localhost:61616</broker_url>
+		<user_name></user_name>
+		<password></password>
+		<sender>
+			<transacted>true</transacted>
+			<acknowledge_mode>1</acknowledge_mode>
+			<delivery_mode>1</delivery_mode>
+		</sender>
+		<receiver>
+			<transacted>false</transacted>
+			<acknowledge_mode>1</acknowledge_mode>
+		</receiver>
+		<receiver_listeners>
+			<receiver_listener>
+				<queue_name>FirstQueue</queue_name>
+				<is_startup>true</is_startup>
+				<receiver_class>test.com.trendy.fw.common.mq.activemq.TestActiveMQReceiver1</receiver_class>
+			</receiver_listener>
+			<receiver_listener>
+				<queue_name>SecondQueue</queue_name>
+				<is_startup>true</is_startup>
+				<receiver_class>test.com.trendy.fw.common.mq.activemq.TestActiveMQReceiver1</receiver_class>
+			</receiver_listener>
+		</receiver_listeners>
+		<pool>
+			<max_total>10</max_total>
+			<block_when_exhausted>true</block_when_exhausted>
+			<max_wait_millis>-1</max_wait_millis>
+			<num_tests_per_eviction_run>100</num_tests_per_eviction_run>
+			<test_on_borrow>true</test_on_borrow>
+			<test_on_return>false</test_on_return>
+			<test_while_idle>false</test_while_idle>
+			<time_between_eviction_runs_millis>60000</time_between_eviction_runs_millis>
+			<min_evictable_idle_time_millis>300000</min_evictable_idle_time_millis>			
+		</pool>
+	</mq_broker>
+</mq_brokers>

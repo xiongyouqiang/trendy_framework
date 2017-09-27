@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	ConnectMode : ACTIVE || PASV
+	TransferType : ASCII || BINARY
+-->
+<ftps>
+	<ftp>
+		<ftp_id>pic_ftp</ftp_id>
+		<host>192.169.100.13</host>
+		<user>aa</user>
+		<password>aa</password>
+		<connect_mode>PASV</connect_mode>
+		<transfer_type>BINARY</transfer_type>
+		<timeout>600000</timeout>
+	</ftp>	
+</ftps>

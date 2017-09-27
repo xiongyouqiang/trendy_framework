@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mq_brokers>
+	<mq_broker>
+		<broker_id>Test</broker_id><!-- 中间件ID，各个MQ服务器自行定义 -->
+		<host_name>10.0.1.201</host_name>
+		<channel>SYSTEM.ADMIN.SVRCONN</channel>
+		<ccsid>1208</ccsid><!-- 编码 -->
+		<port>1414</port>
+		<queue_manager>QM_TEST</queue_manager>
+		<sender><!-- 发送者配置 -->
+			<transacted>true</transacted><!-- 是否支持事务 -->
+			<acknowledge_mode>1</acknowledge_mode><!-- 确认模式 -->
+			<delivery_mode>1</delivery_mode><!-- 传输模式 -->
+		</sender>
+		<receiver><!-- 接收者配置 -->
+			<transacted>false</transacted><!-- 是否支持事务 -->
+			<acknowledge_mode>1</acknowledge_mode><!-- 确认模式 -->
+		</receiver>
+		<receiver_listeners><!-- 接收者监听器 -->
+			<receiver_listener>
+				<queue_name>CRM_TEST01</queue_name><!-- 队列名称 -->
+				<is_startup>true</is_startup><!-- 是否启动 -->
+				<receiver_class>test.com.trendy.fw.common.mq.webspheremq.TestWebSphereMQReceiver1</receiver_class><!-- 监听类 -->
+			</receiver_listener>
+			<receiver_listener>
+				<queue_name>CRM_TEST02</queue_name>
+				<is_startup>true</is_startup>
+				<receiver_class>test.com.trendy.fw.common.mq.webspheremq.TestWebSphereMQReceiver1</receiver_class>
+			</receiver_listener>
+		</receiver_listeners>
+		<pool>
+			<max_total>10</max_total>
+			<block_when_exhausted>true</block_when_exhausted>
+			<max_wait_millis>-1</max_wait_millis>
+			<num_tests_per_eviction_run>100</num_tests_per_eviction_run>
+			<test_on_borrow>true</test_on_borrow>
+			<test_on_return>false</test_on_return>
+			<test_while_idle>false</test_while_idle>
+			<time_between_eviction_runs_millis>60000</time_between_eviction_runs_millis>
+			<min_evictable_idle_time_millis>300000</min_evictable_idle_time_millis>			
+		</pool>
+	</mq_broker>
+</mq_brokers>

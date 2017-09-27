@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component_servers>
+	<component_server>
+		<app_id>app1</app_id>
+		<servers>
+			<server>172.19.8.42:10000</server><!-- 格式：服务器IP+“:”+端口号 -->
+			<server>172.19.8.18:10000</server>
+		</servers>
+	</component_server>
+	<component_server>
+		<app_id>app2</app_id>
+		<servers>
+			<server>172.19.8.18:10000</server>
+		</servers>
+	</component_server>
+</component_servers>

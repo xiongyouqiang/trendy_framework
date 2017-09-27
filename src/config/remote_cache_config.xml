@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<remote_caches>
+	<remote_cache>
+		<app_id>app1</app_id><!--应用ID -->
+		<servers>172.19.8.42:11211</servers><!--缓存服务器列表，组成：ip+"："+端口号，多个用半角逗号分隔 -->
+		<weights>3</weights><!--缓存服务器权重，多个用半角逗号分隔，与上面servers对应数量 -->
+		<init_conn>1</init_conn><!--初始化连接数 -->
+		<min_conn>1</min_conn><!--最小连接数 -->
+		<max_conn>10</max_conn><!--最大连接数 -->
+		<max_idle>1800000</max_idle><!--最大空闲时间，单位：ms -->
+		<max_busy_time>300000</max_busy_time><!--最大处理时间，单位：ms -->
+		<maint_sleep>0</maint_sleep><!--主线程最大睡眠时间 -->
+		<socket_time_out>500000</socket_time_out><!--Socket超时 -->
+		<socket_connect_time_out>0</socket_connect_time_out><!--Socket连接超时 -->
+		<nagle>false</nagle><!--Nagle算法 -->
+		<failover>false</failover><!--当某台服务器链接失效时，是否自动访问到另外一台 -->
+		<failback>false</failback><!--当该台服务器回复时，是否自动恢复 -->
+		<alive_check>true</alive_check><!--检查服务器状态 -->
+	</remote_cache>
+	<remote_cache>
+		<app_id>app2</app_id>
+		<servers>172.19.8.42:11212</servers>
+		<weights>3</weights>
+		<init_conn>1</init_conn>
+		<min_conn>1</min_conn>
+		<max_conn>10</max_conn>
+		<max_idle>1800000</max_idle>
+		<max_busy_time>300000</max_busy_time>
+		<maint_sleep>0</maint_sleep>
+		<socket_time_out>500000</socket_time_out>
+		<socket_connect_time_out>0</socket_connect_time_out>
+		<nagle>false</nagle>
+		<failover>false</failover>
+		<failback>false</failback>
+		<alive_check>true</alive_check>
+	</remote_cache>
+</remote_caches>
