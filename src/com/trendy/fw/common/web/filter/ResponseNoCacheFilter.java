@@ -19,13 +19,11 @@ import com.trendy.fw.common.web.HttpResponseKit;
 public class ResponseNoCacheFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(ResponseNoCacheFilter.class);
 
-	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
 			ServletException {
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
@@ -33,7 +31,6 @@ public class ResponseNoCacheFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 
 	}

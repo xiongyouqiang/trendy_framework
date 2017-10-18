@@ -15,7 +15,6 @@ public class ContentComparator<T> implements Comparator<T> {
 		compareKeyList = ListKit.string2List(compareKeyStr, REGEX_CONDITION);
 	}
 
-	@Override
 	public int compare(T object1, T object2) {
 		try {
 			for (String keyFieldStr : compareKeyList) {

@@ -20,13 +20,11 @@ public class RequestCharsetEncodingFilter implements Filter {
 	private String defaultEncoding = "";// 设置默认编码
 	private boolean forceEncoding = false;// 是否忽略原有的编码
 
-	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
 			ServletException {
 		if (forceEncoding || StringKit.isNull(request.getCharacterEncoding())) {
@@ -37,7 +35,6 @@ public class RequestCharsetEncodingFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		defaultEncoding = filterConfig.getInitParameter("defaultEncoding");
 		forceEncoding = filterConfig.getInitParameter("forceEncoding").equals("true") ? true : false;

@@ -10,7 +10,6 @@ public class ActiveMQListener implements ServletContextListener {
 	private static Logger log = LoggerFactory.getLogger(ActiveMQListener.class);
 	public static Thread thread = null;
 
-	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		log.info("ActiveMQListener启动");
 		if (thread == null) {
@@ -24,7 +23,6 @@ public class ActiveMQListener implements ServletContextListener {
 		log.info("ActiveMQListener启动完成");
 	}
 
-	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		log.info("ActiveMQListener销毁");
 		if (thread != null) {

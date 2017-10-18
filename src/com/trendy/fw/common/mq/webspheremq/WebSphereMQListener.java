@@ -10,7 +10,6 @@ public class WebSphereMQListener implements ServletContextListener {
 	private static Logger log = LoggerFactory.getLogger(WebSphereMQListener.class);
 	public static Thread thread = null;
 
-	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		log.info("WebSphereMQListener启动");
 		if (thread == null) {
@@ -24,7 +23,6 @@ public class WebSphereMQListener implements ServletContextListener {
 		log.info("WebSphereMQListener启动完成");
 	}
 
-	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		log.info("WebSphereMQListener销毁");
 		if (thread != null) {
